@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=24
 #SBATCH --time=10:00:00
-#SBATCH --mem=500gb
+#SBATCH -C mem768
 #SBATCH --constraint=mem768
 
 # Load the Julia module

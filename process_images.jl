@@ -1,8 +1,10 @@
 using Images, FileIO, RealNeuralNetworks
 using RealNeuralNetworks.Manifests
 
+print("it starts")
+
 # Define the directory path and image path
-dir_path = "/burg/home/jd4068/RNN/Morphology-Images/Morphology-20240307T172325Z-001/Morphology/test/"
+dir_path = "/burg/home/jd4068/RNN/Morphology/SHL17_DownSamp"
 img_path = joinpath(dir_path, "NET10_s0216.png")
 
 # Load the first image to determine size
@@ -22,8 +24,8 @@ vol = zeros(Float64, vol_size)  # Using Float64 for compatibility; adjust as nee
 # Load and stack each image into the volume
 for z in 1:length(pathes)
     try
-        img_path = joinpath(dir_path, pathes[z])
-        vol[:, :, z] = load(img_path)
+        imgpath = joinpath(dir_path, pathes[z])
+        vol[:, :, z] = load(imgpath)
     catch e
         println("Error loading image $z: $e")
         break
