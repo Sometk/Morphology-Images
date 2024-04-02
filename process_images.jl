@@ -1,11 +1,19 @@
 using Images, FileIO, RealNeuralNetworks
 using RealNeuralNetworks.Manifests
 
+<<<<<<< HEAD
 print("it starts")
 
 # Define the directory path and image path
 dir_path = "/burg/home/jd4068/RNN/Morphology/SHL17_DownSamp"
 img_path = joinpath(dir_path, "NET10_s0216.png")
+=======
+println("it starts")
+
+# Define the directory path and image path
+dir_path = "/burg/home/jd4068/RNN/Morphology/SHL17_DownSamp"
+img_path = joinpath(dir_path, "SHL17_s0360.png")
+>>>>>>> 89ce830 (Create process_images.jl)
 
 # Load the first image to determine size
 img = load(img_path)
@@ -55,6 +63,9 @@ swc1 = NodeNets.SWCs.SWC(nodeNet)
 using RealNeuralNetworks.SWCs
 println("now saving SWC")
 SWCs.save_swc(swc1, "plsplswork.swc")
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 89ce830 (Create process_images.jl)
