@@ -18,8 +18,24 @@ println("it starts")
 dir_path = "/burg/home/jd4068/RNN/Morphology/NET10_DownSamp"
 img_path = joinpath(dir_path, "NET10_s0216.png")
 
+# Save memory usage data to a file (1st checkpoint)
+open("memory_usage_checkpoint1.dat", "w") do io
+    redirect_stdout(io) do
+        memory_profiler.memory_usage((load_images,), interval=0.1, timeout=3600)
+    end
+end
+
+
 # Load the first image to determine size
 img = load(img_path)
+
+# Save memory usage data to a file (2st checkpoint)
+open("memory_usage_checkpoint2.dat", "w") do io
+    redirect_stdout(io) do
+        memory_profiler.memory_usage((load_images,), interval=0.1, timeout=3600)
+    end
+end
+
 
 # Read all image file paths in the directory
 pathes = readdir(dir_path)
@@ -31,6 +47,14 @@ println("Size of the first image: ", size(img))
 # Preallocate volume array
 vol_size = (size(img)..., length(pathes))
 vol = zeros(Float64, vol_size)  # Using Float64 for compatibility; adjust as needed
+
+# Save memory usage data to a file (3st checkpoint)
+open("memory_usage_checkpoint3.dat", "w") do io
+    redirect_stdout(io) do
+        memory_profiler.memory_usage((load_images,), interval=0.1, timeout=3600)
+    end
+end
+
 
 # Load and stack each image into the volume
 @profile function load_images()
@@ -45,8 +69,8 @@ vol = zeros(Float64, vol_size)  # Using Float64 for compatibility; adjust as nee
     end
 end
 
-# Save memory usage data to a file
-open("memory_usage.dat", "w") do io
+# Save memory usage data to a file (4st checkpoint)
+open("memory_usage_checkpoint4.dat", "w") do io
     redirect_stdout(io) do
         memory_profiler.memory_usage((load_images,), interval=0.1, timeout=3600)
     end
