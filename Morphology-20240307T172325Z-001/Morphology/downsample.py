@@ -8,7 +8,7 @@ def downsample_image(input_path, output_path):
     original_width, original_height = img.size  # Store original dimensions
     img_array = np.array(img)
 
-    downsampled_array = tinybrain.downsample_with_averaging(img_array, factor=(2,2), num_mips=1, sparse=False)
+    downsampled_array = tinybrain.downsample_with_averaging(img_array, factor=(4,4), num_mips=6, sparse=False)
 
     downsampled_img = Image.fromarray(downsampled_array[0])
     downsampled_img.save(output_path)
@@ -20,8 +20,8 @@ def downsample_image(input_path, output_path):
     else:
         print(f"Image {input_path} has not been downsampled.")
 
-input_folder = r"C:\Users\Banan\Morphology-Images\Morphology-20240307T172325Z-001\Morphology\SHL18_MIP3"
-output_folder = r"C:\Users\Banan\Morphology-Images\Morphology-20240307T172325Z-001\Morphology\SHL18_DownSamp"
+input_folder = r"/Users/richardren/Morphology-Images/Morphology-20240307T172325Z-001/Morphology/NET10_MIP5"
+output_folder = r"/Users/richardren/Morphology-Images/Morphology-20240307T172325Z-001/Morphology/NET10_MIP5_DS"
 
 os.makedirs(output_folder, exist_ok=True)
 
